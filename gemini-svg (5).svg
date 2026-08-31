@@ -1,0 +1,115 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Unser generisches, zentriertes N (Urheberrechtsfrei) -->
+    <path id="n-shape" d="M 10 24 L 10 8 L 13 8 L 19 18 L 19 8 L 22 8 L 22 24 L 19 24 L 13 14 L 13 24 Z" />
+    
+    <!-- Ein einzelner Arm (Y) der NixOS Schneeflocke -->
+    <path id="y-arm" d="M13,11.115,6.183,23.76,4.59,20.87l1.839-3.387-3.651-.01L2,16.029l.8-1.477,5.2.018,1.868-3.447Z" />
+  </defs>
+
+  <style>
+    /* Globale Drehung der gesamten Schneeflocke */
+    .global-spin {
+      transform-origin: 16px 16px;
+      animation: spin-anim 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Der Container richtet die Flugbahn der Arme aus */
+    .container {
+      transform-origin: 16px 16px;
+      transform: rotate(var(--r));
+    }
+
+    /* Das N fliegt nach außen und dreht sich dabei zurück, um gerade zu bleiben */
+    .n-part {
+      transform-origin: 16px 16px;
+      animation: n-fly 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Das Y startet unsichtbar im Zentrum und wächst nach außen */
+    .y-part {
+      transform-origin: 16px 16px;
+      animation: y-fly 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Keyframes für den dynamischen Spiral-Effekt */
+    @keyframes spin-anim {
+      0%, 20% { transform: rotate(0deg); }
+      40%, 75% { transform: rotate(180deg); }
+      85%, 100% { transform: rotate(360deg); }
+    }
+
+    /* Das N schrumpft und verblasst, während es in Position fliegt */
+    @keyframes n-fly {
+      0%, 20% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(var(--inv-r)) scale(1);
+      }
+      40%, 75% {
+        opacity: 0;
+        /* -9px / 1px ist exakt der Vektor vom Zentrum zur Y-Position */
+        transform: translate(-9px, 1px) rotate(var(--inv-r)) scale(0.2);
+      }
+      90%, 100% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(var(--inv-r)) scale(1);
+      }
+    }
+
+    /* Das Y fängt in der Mitte an und vergrößert sich auf seine Endposition */
+    @keyframes y-fly {
+      0%, 20% {
+        opacity: 0;
+        transform: translate(9px, -1px) scale(0.2);
+      }
+      40%, 75% {
+        opacity: 1;
+        transform: translate(0px, 0px) scale(1);
+      }
+      90%, 100% {
+        opacity: 0;
+        transform: translate(9px, -1px) scale(0.2);
+      }
+    }
+  </style>
+
+  <g class="global-spin">
+    
+    <!-- Arm 1 (0 Grad) -->
+    <g class="container" style="--r: 0deg; --inv-r: 0deg; --c: #e50914;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 2 (60 Grad) -->
+    <g class="container" style="--r: 60deg; --inv-r: -60deg; --c: #b1060f;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 3 (120 Grad) -->
+    <g class="container" style="--r: 120deg; --inv-r: -120deg; --c: #e50914;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 4 (180 Grad) -->
+    <g class="container" style="--r: 180deg; --inv-r: -180deg; --c: #b1060f;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 5 (240 Grad) -->
+    <g class="container" style="--r: 240deg; --inv-r: -240deg; --c: #e50914;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 6 (300 Grad) -->
+    <g class="container" style="--r: 300deg; --inv-r: -300deg; --c: #b1060f;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+
+  </g>
+</svg>

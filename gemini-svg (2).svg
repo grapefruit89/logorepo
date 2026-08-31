@@ -1,0 +1,125 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Unser generisches, zentriertes N (Urheberrechtsfrei) -->
+    <path id="n-shape" d="M 10 24 L 10 8 L 13 8 L 19 18 L 19 8 L 22 8 L 22 24 L 19 24 L 13 14 L 13 24 Z" />
+    
+    <!-- Ein einzelner Arm (Y) der NixOS Schneeflocke. 
+         Dieser Pfad erzeugt ein senkrecht stehendes Y, wenn es nicht gedreht wird. -->
+    <path id="y-arm" d="M13,11.115,6.183,23.76,4.59,20.87l1.839-3.387-3.651-.01L2,16.029l.8-1.477,5.2.018,1.868-3.447Z" />
+  </defs>
+
+  <style>
+    /* Globale Spiraldrehung (kann bei Bedarf entfernt werden, wenn es statisch enden soll) */
+    .global-spin {
+      transform-origin: 16px 16px;
+      animation: spin-anim 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Der Container bestimmt den Winkel, in den der Arm ausfliegt. 
+       Wir addieren +30° zum Grundwinkel, damit die Endgeometrie des Logos stimmt. */
+    .container {
+      transform-origin: 16px 16px;
+      transform: rotate(calc(var(--base-angle) + 30deg));
+    }
+
+    /* Das N verblasst und schrumpft nach außen */
+    .n-part {
+      transform-origin: 16px 16px;
+      animation: n-fly 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Das Y startet innen und wächst auf die Zielgröße an */
+    .y-part {
+      transform-origin: 16px 16px;
+      animation: y-fly 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* 
+       Damit die 6 "N"s am Anfang als ein EINZIGES N aufrecht stehen, 
+       müssen sie gegen die Container-Rotation (Base + 30) zurückgedreht werden.
+    */
+    @keyframes n-fly {
+      0%, 15% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(calc(-1 * (var(--base-angle) + 30deg))) scale(1);
+      }
+      35%, 75% {
+        opacity: 0;
+        /* Fliegt nach außen */
+        transform: translate(0px, -10px) rotate(calc(-1 * (var(--base-angle) + 30deg))) scale(0.2);
+      }
+      90%, 100% {
+        opacity: 1;
+        transform: translate(0px, 0px) rotate(calc(-1 * (var(--base-angle) + 30deg))) scale(1);
+      }
+    }
+
+    /* 
+       Damit die 6 "Y"s am Ende das perfekte NixOS Logo bilden 
+       (mit waagerechter Ober/Unterkante), müssen sie sich innerhalb 
+       des gedrehten Containers zurückdrehen. Der exakte Korrekturwinkel ist -30°. 
+    */
+    @keyframes y-fly {
+      0%, 15% {
+        opacity: 0;
+        /* Startet unsichtbar im Zentrum */
+        transform: translate(0px, 10px) rotate(-30deg) scale(0.2);
+      }
+      35%, 75% {
+        opacity: 1;
+        /* Endposition: Perfekt ausgerichtet */
+        transform: translate(0px, 0px) rotate(-30deg) scale(1);
+      }
+      90%, 100% {
+        opacity: 0;
+        transform: translate(0px, 10px) rotate(-30deg) scale(0.2);
+      }
+    }
+
+    @keyframes spin-anim {
+      0%, 15% { transform: rotate(0deg); }
+      35%, 75% { transform: rotate(180deg); }
+      90%, 100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <g class="global-spin">
+    
+    <!-- Arm 1 -->
+    <g class="container" style="--base-angle: 0deg; --c: #7ebae4;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 2 -->
+    <g class="container" style="--base-angle: 60deg; --c: #5277c3;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 3 -->
+    <g class="container" style="--base-angle: 120deg; --c: #7ebae4;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 4 -->
+    <g class="container" style="--base-angle: 180deg; --c: #5277c3;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 5 -->
+    <g class="container" style="--base-angle: 240deg; --c: #7ebae4;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+    
+    <!-- Arm 6 -->
+    <g class="container" style="--base-angle: 300deg; --c: #5277c3;">
+      <use href="#n-shape" class="n-part" fill="var(--c)" />
+      <use href="#y-arm" class="y-part" fill="var(--c)" />
+    </g>
+
+  </g>
+</svg>
