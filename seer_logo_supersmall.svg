@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><defs><linearGradient id="a" x1="24" y1="24" x2="93.5" y2="93.5" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#c395fc"/><stop offset="1" stop-color="#4f65f5"/></linearGradient><linearGradient id="b" x1="28" y1="8" x2="28" y2="48" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><circle cx="48" cy="48" r="48" fill="url(#a)"/><circle cx="52" cy="52" r="28" fill="#131928"/><circle cx="38" cy="38" r="14" fill="url(#a)"/><path fill="#131928" opacity=".2" d="M24 52a30 30 0 1 0 28-28 28 28 0 1 1-28 28"/><path d="M48 8a40 40 0 0 0-40 40" stroke="url(#b)" stroke-width="8" stroke-linecap="round" fill="none"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96 96">
+  <defs>
+    <linearGradient id="a" x1="24" x2="93.5" y1="24" y2="93.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c395fc"/>
+      <stop offset="1" stop-color="#4f65f5"/>
+    </linearGradient>
+    <linearGradient id="b" x1="28" x2="28" y1="8" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <circle cx="48" cy="48" r="48" fill="url(#a)"/>
+  <circle cx="52" cy="52" r="28" fill="#131928"/>
+  <circle cx="38" cy="38" r="14" fill="url(#a)"/>
+  <path fill="#131928" d="M24 52a30 30 0 1 0 28-28 28 28 0 1 1-28 28" opacity=".2"/>
+  <path fill="none" stroke="url(#b)" stroke-linecap="round" stroke-width="8" d="M48 8A40 40 0 0 0 8 48"/>
+</svg>
