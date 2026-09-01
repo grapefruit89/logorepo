@@ -1,8 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 108.3 512 295.4">
-  <linearGradient id="a" x1="91.1" x2="420.9" y1="93.5" y2="423.3" gradientTransform="matrix(1 0 0 -1 -122 548.2)" gradientUnits="userSpaceOnUse">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 108 512 296">
+  <linearGradient id="a" x1="-31" x2="299" y1="455" y2="125" gradientUnits="userSpaceOnUse">
     <stop offset="0" stop-color="#e32929"/>
     <stop offset="1" stop-color="#ff8d30"/>
   </linearGradient>
-  <path id="b" fill="none" stroke="url(#a)" stroke-width="24.9" d="M255.75 181.9 V329.7 M499.55 181.9 V329.7 M377.85 108.3 V164.7 M438.95 136.6 V227.6 M316.85 136.6 V227.6"/>
-  <use xlink:href="#b" transform="rotate(180 256 256)"/>
+  <path fill="none" stroke="url(#a)" stroke-width="25" d="M12 182v148m61-46v91m61-28v56m61-119v91m61-193v148m61-193v91m61-120v56m61-27v91m61-46v148"/>
 </svg>
