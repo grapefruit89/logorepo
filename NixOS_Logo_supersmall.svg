@@ -1,15 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-1200 -1200 2400 2400">
   <defs>
     <path id="a" d="m-585 234 120-208L60 936h-240l-120-208-120 208h-120l-60-104 180-312z"/>
+    <g id="b">
+      <use href="#a"/>
+      <use href="#a" transform="rotate(120)"/>
+      <use href="#a" transform="rotate(240)"/>
+    </g>
   </defs>
-  <g fill="#4d6fb7">
-    <use href="#a"/>
-    <use href="#a" transform="rotate(120)"/>
-    <use href="#a" transform="rotate(240)"/>
-  </g>
-  <g fill="#77b6e1">
-    <use href="#a" transform="rotate(60)"/>
-    <use href="#a" transform="rotate(180)"/>
-    <use href="#a" transform="rotate(300)"/>
-  </g>
+  <use fill="#4d6fb7" href="#b"/>
+  <use fill="#77b6e1" href="#b" transform="rotate(60)"/>
 </svg>
