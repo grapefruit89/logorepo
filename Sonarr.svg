@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216.7 216.9">
+  <circle cx="108.3" cy="108.5" r="108.4" style="fill:#eee;stroke-width:17.3464;stroke-linecap:square;stroke-linejoin:bevel;paint-order:markers fill stroke"/>
+  <path fill="#3a3f51" fill-rule="evenodd" d="m195 43-23 22c-13 13-14 24-14 45q-2 27 16 47l19 19-8 9-2 2-8 7-18-17c-15-16-28-17-48-17s-34 2-48 16l-19 19-10-10-8-8 19-20c14-14 16-30 16-48q2-26-15-46L22 42l10-10q4-5 9-8l20 20q20 18 48 16c18 0 35-3 48-17l20-19 8 8z" clip-rule="evenodd"/>
+  <g fill="none" stroke="#0cf" stroke-miterlimit="1" clip-rule="evenodd">
+    <path stroke-width="2" d="m158 60-15 14M31 33l41 40m84 85 28 28m2-154-28 28M32 186l28-28"/>
+    <path stroke-width="7" d="m158 60-17 17M59 61l17 17m-16 80 16-17m62-1 18 18"/>
+  </g>
+  <circle cx="108.3" cy="108.5" r="30" style="fill:#0cf;fill-opacity:1;stroke-width:4.80268;stroke-linecap:square;stroke-linejoin:bevel;paint-order:markers fill stroke"/>
+</svg>

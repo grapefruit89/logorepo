@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <circle cx="512" cy="512" r="509.5" style="fill:#e5e5e5;fill-opacity:1;stroke:none;stroke-width:32.7886;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"/>
+  <circle cx="512" cy="512" r="409.8" style="display:inline;stroke:#009252;stroke-width:12.3902;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"/>
+  <circle cx="512" cy="512" r="270" style="display:inline;fill:#e5e5e5;stroke:#e5e5e5;stroke-width:76"/>
+  <path d="M512 636V71L182 636Zm0-248v565l330-565Z" style="display:inline"/>
+  <path d="M512 636V71L182 636Zm0-248v565l330-565Z" style="display:inline;fill:none;stroke:#009252;stroke-width:16"/>
+  <circle cx="512" cy="512" r="150" style="display:inline;fill:#009252"/>
+</svg>
