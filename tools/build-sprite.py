@@ -11,6 +11,7 @@ DIST = ROOT / "dist"
 OUTPUT = DIST / "icons.svg"
 
 SVG_NS = "http://www.w3.org/2000/svg"
+XLINK_NS = "http://www.w3.org/1999/xlink"
 
 ET.register_namespace("", SVG_NS)
 
@@ -26,55 +27,33 @@ def make_id(filename):
     return name.strip("-")
 
 
-def namespace_ids(root, prefix):
-    mapping = {}
-
-    for element in root.iter():
-        old_id = element.get("id")
-
-        if old_id:
-            new_id = f"{prefix}-{old_id}"
-            mapping[old_id] = new_id
-            element.set("id", new_id)
-
-    return mapping
-
-
-def replace_references(value, mapping):
-    for old, new in mapping.items():
-        value = value.replace(f"url(#{old})", f"url(#{new})")
-        value = value.replace(f'url("#{old}")', f'url("#{new}")')
-        value = value.replace(f"url('#{old}')", f"url('#{new}')")
-        value = value.replace(f"#{old}", f"#{new}")
-
-    return value
-
-
-def rewrite_references(root, mapping):
-    for element in root.iter():
-        for key, value in list(element.attrib.items()):
-            element.set(key, replace_references(value, mapping))
-
-        if element.text:
-            element.text = replace_references(element.text, mapping)
-
-
 def load_svg(path):
     try:
         tree = ET.parse(path)
     except ET.ParseError as error:
-        raise ValueError(
-            f"{path.name}: ungültiges SVG/XML: {error}"
-        )
+        raise ValueError(f"{path.name}: ungültiges SVG/XML: {error}")
 
     root = tree.getroot()
 
     if local_name(root.tag) != "svg":
-        raise ValueError(
-            f"{path.name}: Root-Element ist kein <svg>"
-        )
+        raise ValueError(f"{path.name}: Root-Element ist kein <svg>")
 
     return root
+
+
+def modernize_xlink(root):
+    xlink_href = f"{{{XLINK_NS}}}href"
+
+    for element in root.iter():
+        if xlink_href in element.attrib:
+            value = element.attrib.pop(xlink_href)
+            element.set("href", value)
+
+
+def remove_all_ids(root):
+    for element in root.iter():
+        if "id" in element.attrib:
+            del element.attrib["id"]
 
 
 def build_symbol(path):
@@ -86,9 +65,6 @@ def build_symbol(path):
         )
 
     root = load_svg(path)
-
-    mapping = namespace_ids(root, symbol_id)
-    rewrite_references(root, mapping)
 
     viewbox = root.get("viewBox")
 
@@ -102,6 +78,9 @@ def build_symbol(path):
             raise ValueError(
                 f"{path.name}: kein viewBox vorhanden"
             )
+
+    modernize_xlink(root)
+    remove_all_ids(root)
 
     symbol = ET.Element(
         f"{{{SVG_NS}}}symbol",
@@ -120,10 +99,7 @@ def build_symbol(path):
         value = root.get(attribute)
 
         if value is not None:
-            symbol.set(
-                attribute,
-                replace_references(value, mapping),
-            )
+            symbol.set(attribute, value)
 
     for child in list(root):
         root.remove(child)
