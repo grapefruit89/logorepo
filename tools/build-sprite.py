@@ -17,6 +17,15 @@ ET.register_namespace("", SVG_NS)
 
 URL_REF_RE = re.compile(r"url\(#([^)]+)\)")
 HASH_REF_RE = re.compile(r"^#(.+)$")
+PAINT_TAGS = {
+    "linearGradient",
+    "radialGradient",
+    "pattern",
+    "clipPath",
+    "mask",
+    "filter",
+    "marker",
+}
 
 
 def local_name(tag):
@@ -98,37 +107,164 @@ def rewrite_value(value, mapping):
     return value
 
 
-def namespace_internal_ids(root, symbol_id):
-    """Keep referenced ids, prefix them with the symbol id, drop unused ids.
+def clone_element(element, drop_id=True):
+    attrib = dict(element.attrib)
+    if drop_id:
+        attrib.pop("id", None)
 
-    Gradients/masks/clips must keep working inside the combined sprite,
-    but raw ids like `a` must not collide across logos.
+    clone = ET.Element(element.tag, attrib)
+    clone.text = element.text
+    clone.tail = element.tail
+
+    for child in element:
+        clone.append(clone_element(child, drop_id=drop_id))
+
+    return clone
+
+
+def local_href(element):
+    value = element.get("href")
+    if not value:
+        return None
+
+    match = HASH_REF_RE.match(value)
+    if not match:
+        return None
+
+    return match.group(1)
+
+
+def combine_transform(base, extra):
+    parts = [part for part in (base, extra) if part]
+    return " ".join(parts) if parts else None
+
+
+def expand_use_elements(root):
+    """Replace local <use href=\"#id\"> with copies of the referenced nodes.
+
+    That removes geometry IDs that would otherwise leak into the sprite
+    and make the public logo IDs ambiguous.
+    """
+    for _ in range(32):
+        uses = [
+            element
+            for element in root.iter()
+            if local_name(element.tag) == "use" and local_href(element)
+        ]
+
+        if not uses:
+            return
+
+        ids = collect_ids(root)
+        expanded = 0
+
+        for use in uses:
+            parent = None
+            index = None
+
+            for candidate in root.iter():
+                children = list(candidate)
+                if use in children:
+                    parent = candidate
+                    index = children.index(use)
+                    break
+
+            if parent is None:
+                continue
+
+            target_id = local_href(use)
+            target = ids.get(target_id)
+
+            if target is None or target is use:
+                continue
+
+            replacement = clone_element(target, drop_id=True)
+
+            for name, value in use.attrib.items():
+                if name in {"id", "href"}:
+                    continue
+
+                if name == "transform":
+                    replacement.set(
+                        "transform",
+                        combine_transform(replacement.get("transform"), value),
+                    )
+                    continue
+
+                if name not in replacement.attrib:
+                    replacement.set(name, value)
+
+            replacement.tail = use.tail
+            parent.remove(use)
+            parent.insert(index, replacement)
+            expanded += 1
+
+        if expanded == 0:
+            return
+
+    raise ValueError("konnte interne <use>-Referenzen nicht vollständig auflösen")
+
+
+def parent_of(root, target):
+    for element in root.iter():
+        if target in list(element):
+            return element
+    return None
+
+
+def drop_unused_defs(root):
+    used = referenced_ids(root)
+
+    for defs in list(root.iter()):
+        if local_name(defs.tag) != "defs":
+            continue
+
+        for child in list(defs):
+            child_id = child.get("id")
+            if child_id and child_id in used:
+                continue
+            defs.remove(child)
+
+        if len(defs) == 0:
+            parent = parent_of(root, defs)
+            if parent is not None:
+                parent.remove(defs)
+
+
+def namespace_internal_ids(root, symbol_id):
+    """Keep only referenced paint-server IDs. Prefix them so they cannot be
+    mistaken for public logo IDs when someone scans every id attribute.
     """
     existing = collect_ids(root)
     used = referenced_ids(root)
     mapping = {}
 
     for old_id, element in existing.items():
-        if old_id in used:
-            new_id = f"{symbol_id}-{old_id}"
-            mapping[old_id] = new_id
-            element.set("id", new_id)
-        else:
+        if old_id not in used:
             del element.attrib["id"]
+            continue
 
-    if not mapping:
-        return
+        if local_name(element.tag) not in PAINT_TAGS:
+            del element.attrib["id"]
+            continue
 
-    for element in root.iter():
-        for name, value in list(element.attrib.items()):
-            rewritten = rewrite_value(value, mapping)
-            if rewritten != value:
-                element.set(name, rewritten)
+        new_id = f"_{symbol_id}-{old_id}"
+        mapping[old_id] = new_id
+        element.set("id", new_id)
 
-        if element.text:
-            rewritten = rewrite_value(element.text, mapping)
-            if rewritten != element.text:
-                element.text = rewritten
+    if mapping:
+        for element in root.iter():
+            for name, value in list(element.attrib.items()):
+                rewritten = rewrite_value(value, mapping)
+                if rewritten != value:
+                    element.set(name, rewritten)
+
+            if element.text:
+                rewritten = rewrite_value(element.text, mapping)
+                if rewritten != element.text:
+                    element.text = rewritten
+
+    drop_unused_defs(root)
 
 
 def build_symbol(path):
@@ -155,7 +291,19 @@ def build_symbol(path):
             )
 
     modernize_xlink(root)
+    expand_use_elements(root)
+    drop_unused_defs(root)
     namespace_internal_ids(root, symbol_id)
+
+    leftover_uses = [
+        element
+        for element in root.iter()
+        if local_name(element.tag) == "use" and local_href(element)
+    ]
+    if leftover_uses:
+        raise ValueError(
+            f"{path.name}: unaufgelöste interne Referenz {[local_href(u) for u in leftover_uses]}"
+        )
 
     symbol = ET.Element(
         f"{{{SVG_NS}}}symbol",
@@ -215,14 +363,8 @@ def build():
             f"Fehler: Keine SVG-Dateien in {LOGOS}"
         )
 
-    sprite = ET.Element(
-        f"{{{SVG_NS}}}svg",
-        {
-            "aria-hidden": "true",
-        },
-    )
-
-    used_ids = set()
+    used_ids = []
+    symbols = []
 
     for path in files:
         symbol = build_symbol(path)
@@ -233,7 +375,18 @@ def build():
                 f"Doppelte Sprite-ID: #{symbol_id}"
             )
 
-        used_ids.add(symbol_id)
+        used_ids.append(symbol_id)
+        symbols.append(symbol)
+
+    sprite = ET.Element(
+        f"{{{SVG_NS}}}svg",
+        {
+            "aria-hidden": "true",
+            "data-icons": " ".join(used_ids),
+        },
+    )
+
+    for symbol in symbols:
         sprite.append(symbol)
 
     indent(sprite)
@@ -258,9 +411,9 @@ def build():
     print(f"  Quelle : {LOGOS}")
     print(f"  Ausgabe: {OUTPUT}")
     print()
-    print(f"  {len(files)} Logos:")
+    print(f"  {len(files)} öffentliche IDs:")
 
-    for symbol_id in sorted(used_ids):
+    for symbol_id in used_ids:
         print(f"    #{symbol_id}")
 
     print()
