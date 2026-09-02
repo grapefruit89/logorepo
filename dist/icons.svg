@@ -104,10 +104,6 @@
     <path fill="#1a1a1a" d="M0 0h1015v1015H0z" />
     <path fill="#f7f7f7" d="M536 196a243 243 0 0 1 195 388 242 242 0 0 1-122 87l-14 4-31-159 9-4a85 85 0 1 0-121-76 85 85 0 0 0 48 76l9 4-52 319H312V196z" />
   </symbol>
-  <symbol id="pocketid2" viewBox="0 0 1015 1015">
-    <path fill="#1a1a1a" d="M0 0h1015v1015H0z" />
-    <path fill="#f7f7f7" d="M536 196a243 243 0 0 1 195 388 242 242 0 0 1-122 87l-14 4-31-159 9-4a85 85 0 1 0-121-76 85 85 0 0 0 48 76l9 4-52 319H312V196z" />
-  </symbol>
   <symbol id="prowlarr" viewBox="0 0 1024 1024">
     <g style="display:inline" transform="matrix(5.4613 0 0 -5.4613 765.424 2013.6348)">
       <circle cx="-46.4033" cy="-274.9576" r="90" style="fill:#ffe6d5;fill-opacity:1;fill-rule:evenodd;stroke-width:1.68177998" transform="scale(1 -1)" />
