@@ -7,6 +7,7 @@ on:
     paths:
       - "logos/**/*.svg"
       - "tools/build-sprite.py"
+  workflow_dispatch:
 
 permissions:
   contents: write

@@ -15,6 +15,9 @@ XLINK_NS = "http://www.w3.org/1999/xlink"
 
 ET.register_namespace("", SVG_NS)
 
+URL_REF_RE = re.compile(r"url\(#([^)]+)\)")
+HASH_REF_RE = re.compile(r"^#(.+)$")
+
 
 def local_name(tag):
     return tag.rsplit("}", 1)[-1]
@@ -50,10 +53,82 @@ def modernize_xlink(root):
             element.set("href", value)
 
 
-def remove_all_ids(root):
+def collect_ids(root):
+    ids = {}
+
     for element in root.iter():
-        if "id" in element.attrib:
+        element_id = element.get("id")
+        if element_id:
+            ids[element_id] = element
+
+    return ids
+
+
+def referenced_ids(root):
+    found = set()
+
+    for element in root.iter():
+        for value in element.attrib.values():
+            found.update(URL_REF_RE.findall(value))
+
+            match = HASH_REF_RE.match(value)
+            if match:
+                found.add(match.group(1))
+
+        if element.text:
+            found.update(URL_REF_RE.findall(element.text))
+
+    return found
+
+
+def rewrite_value(value, mapping):
+    def replace_url(match):
+        old_id = match.group(1)
+        new_id = mapping.get(old_id, old_id)
+        return f"url(#{new_id})"
+
+    value = URL_REF_RE.sub(replace_url, value)
+
+    match = HASH_REF_RE.match(value)
+    if match:
+        old_id = match.group(1)
+        if old_id in mapping:
+            value = f"#{mapping[old_id]}"
+
+    return value
+
+
+def namespace_internal_ids(root, symbol_id):
+    """Keep referenced ids, prefix them with the symbol id, drop unused ids.
+
+    Gradients/masks/clips must keep working inside the combined sprite,
+    but raw ids like `a` must not collide across logos.
+    """
+    existing = collect_ids(root)
+    used = referenced_ids(root)
+    mapping = {}
+
+    for old_id, element in existing.items():
+        if old_id in used:
+            new_id = f"{symbol_id}-{old_id}"
+            mapping[old_id] = new_id
+            element.set("id", new_id)
+        else:
             del element.attrib["id"]
+
+    if not mapping:
+        return
+
+    for element in root.iter():
+        for name, value in list(element.attrib.items()):
+            rewritten = rewrite_value(value, mapping)
+            if rewritten != value:
+                element.set(name, rewritten)
+
+        if element.text:
+            rewritten = rewrite_value(element.text, mapping)
+            if rewritten != element.text:
+                element.text = rewritten
 
 
 def build_symbol(path):
@@ -80,7 +155,7 @@ def build_symbol(path):
             )
 
     modernize_xlink(root)
-    remove_all_ids(root)
+    namespace_internal_ids(root, symbol_id)
 
     symbol = ET.Element(
         f"{{{SVG_NS}}}symbol",
