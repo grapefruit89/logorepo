@@ -33,9 +33,9 @@
     <rect width="500" height="500" fill="#175ddc" paint-order="markers fill stroke" ry="250" />
     <path fill="#fff" d="M399 92a15 15 0 0 0-11-5H112a15 15 0 0 0-11 5 15 15 0 0 0-5 10v186q0 20 8 41 8 20 20 36c12 16 17 21 28 31a326 326 0 0 0 60 43l32 17 6 1 6-1 11-5 50-31q14-10 31-25t28-30c12-16 15-23 20-36q8-21 8-41V102q0-6-5-10m-36 196c0 67-113 125-113 125V126h113z" />
   </symbol>
-  <symbol id="caddy" viewBox="0 0 154.5 145.5">
+  <symbol id="caddy" viewBox="0 0 155 146">
     <defs>
-      <linearGradient x1="0%" x2="100%" y1="0%" y2="100%">
+      <linearGradient x2="1" gradientTransform="rotate(42 -7 12)scale(220)" gradientUnits="userSpaceOnUse">
         <stop stop-color="#23d93b" />
         <stop offset=".3" stop-color="#77c4f7" />
         <stop offset="1" stop-color="#0059d1" />
