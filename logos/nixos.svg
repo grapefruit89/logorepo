@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-120 -120 240 240">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1200 -1200 2400 2400">
   <defs>
-    <path id="a" d="m-58 23 12-21L6 94h-24l-12-21-12 21h-12l-6-10 18-31z"/>
+    <path id="a" d="m-585 234 120-208L60 936h-240l-120-208-120 208h-120l-60-104 180-312z"/>
     <g id="b">
       <use href="#a"/>
       <use href="#a" transform="rotate(120)"/>
