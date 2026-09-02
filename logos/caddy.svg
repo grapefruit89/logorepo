@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.5 145.5">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155 146">
   <defs>
-    <linearGradient id="a" x1="0%" x2="100%" y1="0%" y2="100%">
+    <linearGradient id="a" x2="1" gradientTransform="rotate(42 -7 12)scale(220)" gradientUnits="userSpaceOnUse">
       <stop stop-color="#23d93b"/>
       <stop offset=".3" stop-color="#77c4f7"/>
       <stop offset="1" stop-color="#0059d1"/>
