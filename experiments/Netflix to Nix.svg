@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="-1200 -1200 2400 2400">
+  
+  <defs>
+    <!-- Diese beiden Variablen dienen nur der Übersicht (werden vom animate-Tag überschrieben) -->
+    <!-- Das zentrierte 10-Punkt "N" -->
+    <path id="n-shape" d="M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z" />
+    <!-- Das dezentrierte 10-Punkt NixOS-Lambda -->
+    <path id="l-shape" d="M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z" />
+  </defs>
+
+  <g>
+    <!-- Element 1: 0 Grad (Dunkelblau) -->
+    <path fill="#E50914">
+      <animate attributeName="d" 
+               values="M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z" 
+               keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animateTransform attributeName="transform" type="rotate" values="0; 0; 0; 0; 0" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animate attributeName="fill" values="#E50914; #E50914; #4d6fb7; #4d6fb7; #E50914" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+    </path>
+
+    <!-- Element 2: 60 Grad (Hellblau) -->
+    <path fill="#E50914">
+      <animate attributeName="d" 
+               values="M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z" 
+               keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animateTransform attributeName="transform" type="rotate" values="0; 0; 60; 60; 0" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animate attributeName="fill" values="#E50914; #E50914; #77b6e1; #77b6e1; #E50914" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+    </path>
+
+    <!-- Element 3: 120 Grad (Dunkelblau) -->
+    <path fill="#E50914">
+      <animate attributeName="d" 
+               values="M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z" 
+               keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animateTransform attributeName="transform" type="rotate" values="0; 0; 120; 120; 0" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animate attributeName="fill" values="#E50914; #E50914; #4d6fb7; #4d6fb7; #E50914" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+    </path>
+
+    <!-- Element 4: 180 Grad (Hellblau) -->
+    <path fill="#E50914">
+      <animate attributeName="d" 
+               values="M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z" 
+               keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animateTransform attributeName="transform" type="rotate" values="0; 0; 180; 180; 0" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animate attributeName="fill" values="#E50914; #E50914; #77b6e1; #77b6e1; #E50914" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+    </path>
+
+    <!-- Element 5: 240 Grad (Dunkelblau) -->
+    <path fill="#E50914">
+      <animate attributeName="d" 
+               values="M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z" 
+               keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animateTransform attributeName="transform" type="rotate" values="0; 0; 240; 240; 0" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animate attributeName="fill" values="#E50914; #E50914; #4d6fb7; #4d6fb7; #E50914" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+    </path>
+
+    <!-- Element 6: 300 Grad (Hellblau) -->
+    <path fill="#E50914">
+      <animate attributeName="d" 
+               values="M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -585 234 L -465 26 L 60 936 L -180 936 L -300 728 L -360 832 L -420 936 L -540 936 L -600 832 L -420 520 Z;
+                       M -275 400 L -275 -400 L -125 -400 L 125 100 L 125 -400 L 275 -400 L 275 400 L 125 400 L -125 -100 L -125 400 Z" 
+               keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animateTransform attributeName="transform" type="rotate" values="0; 0; 300; 300; 0" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+      <animate attributeName="fill" values="#E50914; #E50914; #77b6e1; #77b6e1; #E50914" keyTimes="0; 0.15; 0.45; 0.7; 1" dur="6s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1; 0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+    </path>
+  </g>
+</svg>
