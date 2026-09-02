@@ -1,14 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024">
-  <defs>
-    <clipPath id="b">
-      <use xlink:href="#a" clip-rule="evenodd"/>
-    </clipPath>
-    <path id="a" d="M0 0h1024v1024H0z"/>
-  </defs>
-  <g clip-path="url(#b)">
-    <use xlink:href="#a" fill="#fff" fill-opacity="0"/>
-    <path fill="#24292e" d="m175 176 8 714c-60 8-105-22-105-82l-8-594C70 26 243-20 348 56l534 308c76 53 91 150 53 218-8-53-30-83-75-113L258 131c-45-30-83-23-83 45"/>
-    <path fill="#24292e" d="M130 928q69 21 128-15l617-361c37 53 30 105-15 135L341 988c-75 38-173 0-211-60"/>
-    <path fill="#ffc230" d="m311 717 368-210-361-203z"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <path fill="#24292e" d="m175 176 8 714c-60 8-105-22-105-82l-8-594C70 26 243-20 348 56l534 308c76 53 91 150 53 218-8-53-30-83-75-113L258 131c-45-30-83-23-83 45 M130 928q69 21 128-15l617-361c37 53 30 105-15 135L341 988c-75 38-173 0-211-60"/>
+  <path fill="#ffc230" d="m311 717 368-210-361-203z"/>
 </svg>
