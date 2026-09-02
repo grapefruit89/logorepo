@@ -101,8 +101,8 @@
     <path d="M268.7 292.1v46h132.4v-46zm11.7 13.4h109v19.2h-109z" class="st1" />
   </symbol>
   <symbol id="pocket-id" viewBox="0 0 1015 1015">
-    <path fill="#1a1a1a" stroke="#000" d="M1.1 0h1015.2v1014.7H1.1z" transform="matrix(1.04 0 0 1.03 -11.4 -8.1)" />
-    <path fill="#f7f7f7" fill-rule="nonzero" d="M536.3 195.8a243.3 243.3 0 0 1 195 387.8 242 242 0 0 1-121.5 86.8l-13.5 4.3L564 516l9-4.3a84.7 84.7 0 1 0-121.3-76.2 85 85 0 0 0 47.7 76.2l8.8 4.2-51.8 319.3H311.7V195.8z" />
+    <path fill="#1a1a1a" d="M0 0h1015v1015H0z" />
+    <path fill="#f7f7f7" d="M536 196a243 243 0 0 1 195 388 242 242 0 0 1-122 87l-14 4-31-159 9-4a85 85 0 1 0-121-76 85 85 0 0 0 48 76l9 4-52 319H312V196z" />
   </symbol>
   <symbol id="pocketid2" viewBox="0 0 1015 1015">
     <path fill="#1a1a1a" d="M0 0h1015v1015H0z" />
