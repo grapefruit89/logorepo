@@ -347,6 +347,100 @@ def indent(element, level=0):
         element[-1].tail = indentation
 
 
+PREVIEW_COLS = 6
+PREVIEW_CELL = 96
+PREVIEW_LABEL = 22
+PREVIEW_GAP = 28
+PREVIEW_PAD = 28
+
+
+def add_preview_sheet(sprite, symbol_ids):
+    """Make the sprite visible when opened as a file.
+
+    <symbol> is only a definition. Without <use>, a browser/editor shows
+    an empty white canvas even though all logo data is present.
+    """
+    count = len(symbol_ids)
+    cols = min(PREVIEW_COLS, count) or 1
+    rows = (count + cols - 1) // cols
+
+    width = PREVIEW_PAD * 2 + cols * PREVIEW_CELL + (cols - 1) * PREVIEW_GAP
+    height = (
+        PREVIEW_PAD * 2
+        + rows * (PREVIEW_CELL + PREVIEW_LABEL)
+        + (rows - 1) * PREVIEW_GAP
+    )
+
+    sprite.set("viewBox", f"0 0 {width} {height}")
+    sprite.set("width", str(width))
+    sprite.set("height", str(height))
+    sprite.set("role", "img")
+
+    background = ET.Element(
+        f"{{{SVG_NS}}}rect",
+        {
+            "width": "100%",
+            "height": "100%",
+            "fill": "#f3f4f6",
+        },
+    )
+    sprite.append(background)
+
+    preview = ET.Element(
+        f"{{{SVG_NS}}}g",
+        {
+            "data-preview": "true",
+        },
+    )
+
+    for index, symbol_id in enumerate(symbol_ids):
+        col = index % cols
+        row = index // cols
+        x = PREVIEW_PAD + col * (PREVIEW_CELL + PREVIEW_GAP)
+        y = PREVIEW_PAD + row * (PREVIEW_CELL + PREVIEW_LABEL + PREVIEW_GAP)
+
+        tile = ET.Element(
+            f"{{{SVG_NS}}}rect",
+            {
+                "x": str(x),
+                "y": str(y),
+                "width": str(PREVIEW_CELL),
+                "height": str(PREVIEW_CELL),
+                "rx": "16",
+                "fill": "#fff",
+                "stroke": "#e5e7eb",
+            },
+        )
+        icon = ET.Element(
+            f"{{{SVG_NS}}}use",
+            {
+                "href": f"#{symbol_id}",
+                "x": str(x + 12),
+                "y": str(y + 12),
+                "width": str(PREVIEW_CELL - 24),
+                "height": str(PREVIEW_CELL - 24),
+            },
+        )
+        label = ET.Element(
+            f"{{{SVG_NS}}}text",
+            {
+                "x": str(x + PREVIEW_CELL / 2),
+                "y": str(y + PREVIEW_CELL + 16),
+                "text-anchor": "middle",
+                "font-family": "ui-sans-serif, system-ui, sans-serif",
+                "font-size": "12",
+                "fill": "#374151",
+            },
+        )
+        label.text = symbol_id
+
+        preview.append(tile)
+        preview.append(icon)
+        preview.append(label)
+
+    sprite.append(preview)
+
+
 def build():
     if not LOGOS.exists():
         raise SystemExit(
@@ -381,13 +475,14 @@ def build():
     sprite = ET.Element(
         f"{{{SVG_NS}}}svg",
         {
-            "aria-hidden": "true",
             "data-icons": " ".join(used_ids),
         },
     )
 
     for symbol in symbols:
         sprite.append(symbol)
+
+    add_preview_sheet(sprite, used_ids)
 
     indent(sprite)
 
