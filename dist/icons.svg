@@ -77,34 +77,6 @@
     <path d="M512 636V71L182 636Zm0-248v565l330-565Z" style="display:inline;fill:none;stroke:#009252;stroke-width:16" />
     <circle cx="512" cy="512" r="150" style="display:inline;fill:#009252" />
   </symbol>
-  <symbol id="logo" viewBox="0 0 1024 1024">
-    <style>.a{fill:#989898;stroke-width:24;}.b{fill:none;stroke-width:16;stroke:#009252;}</style>
-    <defs>
-      <clipPath>
-        <circle cx="512" cy="512" r="505" style="fill:#989898;stroke-width:3.6" />
-      </clipPath>
-      <clipPath>
-        <path d="m512 636l0-565 -330 565 330 0z" class="a" />
-        <path d="m512 388l0 565 330-565 -330 0z" class="a" />
-      </clipPath>
-    </defs>
-    <g>
-      <title>  background</title>
-      <rect x="-1" y="-1" width="1026" height="1026" fill="none" />
-    </g>
-    <g>
-      <title>  Layer 1</title>
-      <circle cx="512" cy="512" r="410" stroke-width="1.8" />
-      <ellipse cx="512" cy="512" rx="460" ry="460" style="fill:none;stroke-width:99;stroke:#e5e5e5" />
-      <ellipse cx="512" cy="512" rx="270" ry="270" style="fill:#e5e5e5;stroke-width:76;stroke:#e5e5e5" />
-      <ellipse ry="410" rx="410" cy="512" cx="512" style="fill-opacity:null;fill:none;stroke-width:12;stroke:#009252" />
-      <path d="m512 636l0-565 -330 565 330 0z" />
-      <path d="m512 388l0 565 330-565 -330 0z" fill="#000" />
-      <path d="m512 636l0-565 -330 565 330 0z" class="b" />
-      <path d="m512 388l0 565 330-565 -330 0z" class="b" />
-      <ellipse cx="512" cy="512" rx="150" ry="150" style="fill-opacity:null;fill:#009252;stroke-opacity:null;stroke-width:null;stroke:null" />
-    </g>
-  </symbol>
   <symbol id="navidrome" viewBox="0 0 512 512">
     <g stroke="#000" stroke-width="21">
       <circle cx="256" cy="256" r="245.5" fill="#0084ff" />
