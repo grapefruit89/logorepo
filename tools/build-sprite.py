@@ -39,6 +39,34 @@ def make_id(filename):
     return name.strip("-")
 
 
+FILENAME_RE = re.compile(r"^[a-z0-9-]+\.svg$")
+
+
+def validate_filenames(files):
+    """Reject filenames that don't survive as a raw GitHub URL as-is.
+
+    make_id() already normalizes the sprite id regardless of the source
+    filename, but consumers (e.g. Homepage) link directly to
+    logos/<filename>.svg, so the filename itself has to be clean too.
+    """
+    invalid = [path for path in files if not FILENAME_RE.match(path.name)]
+
+    if not invalid:
+        return
+
+    lines = [
+        f"    {path.name}  ->  {make_id(path.name)}.svg"
+        for path in invalid
+    ]
+
+    raise SystemExit(
+        "Fehler: Dateinamen in logos/ dürfen nur a-z, 0-9 und - enthalten "
+        "(Endung .svg, keine Leerzeichen/Großbuchstaben):\n\n"
+        + "\n".join(lines)
+        + "\n\nBitte umbenennen (git mv) und erneut pushen."
+    )
+
+
 def load_svg(path):
     try:
         tree = ET.parse(path)
@@ -456,6 +484,8 @@ def build():
         raise SystemExit(
             f"Fehler: Keine SVG-Dateien in {LOGOS}"
         )
+
+    validate_filenames(files)
 
     used_ids = []
     symbols = []
