@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" data-icons="acme audiobookshelf bentopdf bitwarden caddy cloudflare feishin home-assistant jellyfin lidarr navidrome nixos ntfy pocket-id prowlarr radarr recyclarr seerr sonarr unraid" viewBox="0 0 772 612" width="772" height="612" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" data-icons="acme audiobookshelf bentopdf bitwarden caddy cloudflare feishin home-assistant jellyfin lidarr navidrome nixos ntfy pocket-id prowlarr radarr readeck recyclarr seerr sonarr unraid" viewBox="0 0 772 612" width="772" height="612" role="img">
   <symbol id="acme" viewBox="22 0 72 63">
     <g fill="#51b957">
       <path d="M44.57 43.48c.85.02 1.65-.42 2.09-1.15l2-3.58 1.64-2.86.08-.14 5.22-9.09a2.37 2.37 0 0 1 3.24-.87c.36.21.67.51.87.87l3.5 6.11c.42.74 1.21 1.19 2.06 1.19a2.39 2.39 0 0 0 2.44-2.34c0-.45-.11-.9-.35-1.29l-7.62-13.28a2.37 2.37 0 0 0-3.24-.87c-.36.21-.67.51-.87.87L42.52 39.89a2.4 2.4 0 0 0 .87 3.27c.36.21.77.32 1.18.32" />
@@ -167,6 +167,14 @@
     <path fill="#24292e" d="m175 176 8 714c-60 8-105-22-105-82l-8-594C70 26 243-20 348 56l534 308c76 53 91 150 53 218-8-53-30-83-75-113L258 131c-45-30-83-23-83 45 M130 928q69 21 128-15l617-361c37 53 30 105-15 135L341 988c-75 38-173 0-211-60" />
     <path fill="#ffc230" d="m311 717 368-210-361-203z" />
   </symbol>
+  <symbol id="readeck" viewBox="0 0 24 24">
+    <path fill="#ffcb5c" d="m19.1 7-10 4.6v7.2l12.7-5.9Z" />
+    <path fill="#37bed9" d="M9.1 11.8v7.1l10.6 5-.6-3.9 3.4-2Z" />
+    <path fill="#187995" d="M2.6 3.9h6.5v19.2H2.6z" />
+    <path fill-opacity=".3" d="M2.6 3.9v.4L21.4 13l.4-.1Z" />
+    <path fill="#37bed9" d="M9.1.3 2.6 3.9l19.2 9V5.7Z" />
+    <path fill="#fff" d="M9.1 6.9v4.7l5.1-2.4Z" />
+  </symbol>
   <symbol id="recyclarr" viewBox="762 306.2 401.8 459.6">
     <style>
     .st0{fill:#fefefe}
@@ -259,16 +267,19 @@
     <use href="#radarr" x="412" y="332" width="72" height="72" />
     <text x="448.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">radarr</text>
     <rect x="524" y="320" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#recyclarr" x="536" y="332" width="72" height="72" />
-    <text x="572.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">recyclarr</text>
+    <use href="#readeck" x="536" y="332" width="72" height="72" />
+    <text x="572.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">readeck</text>
     <rect x="648" y="320" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#seerr" x="660" y="332" width="72" height="72" />
-    <text x="696.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">seerr</text>
+    <use href="#recyclarr" x="660" y="332" width="72" height="72" />
+    <text x="696.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">recyclarr</text>
     <rect x="28" y="466" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#sonarr" x="40" y="478" width="72" height="72" />
-    <text x="76.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">sonarr</text>
+    <use href="#seerr" x="40" y="478" width="72" height="72" />
+    <text x="76.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">seerr</text>
     <rect x="152" y="466" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#unraid" x="164" y="478" width="72" height="72" />
-    <text x="200.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">unraid</text>
+    <use href="#sonarr" x="164" y="478" width="72" height="72" />
+    <text x="200.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">sonarr</text>
+    <rect x="276" y="466" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
+    <use href="#unraid" x="288" y="478" width="72" height="72" />
+    <text x="324.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">unraid</text>
   </g>
 </svg>
