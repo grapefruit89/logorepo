@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" data-icons="acme audiobookshelf bentopdf bitwarden caddy cloudflare feishin home-assistant jellyfin lidarr navidrome nixos ntfy pocket-id prowlarr radarr readeck recyclarr seerr sonarr unraid" viewBox="0 0 772 612" width="772" height="612" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" data-icons="acme audiobookshelf bentopdf bitwarden caddy cloudflare feishin home-assistant jellyfin lidarr metube navidrome nixos ntfy pocket-id prowlarr radarr readeck readmeabook recyclarr seerr sonarr unraid" viewBox="0 0 772 612" width="772" height="612" role="img">
   <symbol id="acme" viewBox="22 0 72 63">
     <g fill="#51b957">
       <path d="M44.57 43.48c.85.02 1.65-.42 2.09-1.15l2-3.58 1.64-2.86.08-.14 5.22-9.09a2.37 2.37 0 0 1 3.24-.87c.36.21.67.51.87.87l3.5 6.11c.42.74 1.21 1.19 2.06 1.19a2.39 2.39 0 0 0 2.44-2.34c0-.45-.11-.9-.35-1.29l-7.62-13.28a2.37 2.37 0 0 0-3.24-.87c-.36.21-.67.51-.87.87L42.52 39.89a2.4 2.4 0 0 0 .87 3.27c.36.21.77.32 1.18.32" />
@@ -75,6 +75,9 @@
     <path d="M512 636V71L182 636Zm0-248v565l330-565Z" style="display:inline" />
     <path d="M512 636V71L182 636Zm0-248v565l330-565Z" style="display:inline;fill:none;stroke:#009252;stroke-width:16" />
     <circle cx="512" cy="512" r="150" style="display:inline;fill:#009252" />
+  </symbol>
+  <symbol id="metube" viewBox="0 75 512 362.1">
+    <path d="M1991 4245c-715-17-1123-41-1303-78-416-83-594-291-665-772C1 3250-8 2266 8 1875c18-401 46-584 114-746 106-246 285-368 635-432 230-42 758-66 1434-67 415 0 1656 27 1844 41 290 21 544 73 686 140 232 111 349 381 389 904 13 171 13 1228 0 1426-22 339-55 500-134 663a595 595 0 0 1-421 338c-131 33-446 67-869 93-240 15-1237 20-1695 10m1347-979c0-3-173-300-384-660s-384-656-384-659 173-6 384-6h384v-328H1781v328h385c317 0 385 2 380 13-3 8-176 305-385 660s-380 649-380 652 351 6 779 6 778-3 778-6" style="fill:#f55848" transform="matrix(.1 0 0 -.1 0 500)" />
   </symbol>
   <symbol id="navidrome" viewBox="0 0 512 512">
     <g stroke="#000" stroke-width="21">
@@ -175,6 +178,11 @@
     <path fill="#37bed9" d="M9.1.3 2.6 3.9l19.2 9V5.7Z" />
     <path fill="#fff" d="M9.1 6.9v4.7l5.1-2.4Z" />
   </symbol>
+  <symbol id="readmeabook" viewBox="0 0 512 512">
+    <path d="M476 384 285 504a54 54 0 0 1-58 0L36 384q-15-11-16-30V12C20 3 30-3 38 2l203 123q15 9 30 0L474 4c8-5 18 1 18 10v340q0 20-16 30M248 112q-22-34-69-67C135 15 91 0 65 4zM449 4c-26-4-71 11-115 41q-47 33-69 67z" style="fill:#113263" />
+    <path d="M343 268 144 151c-15-9-34 2-34 19v234c0 17 19 28 34 19l199-117c14-8 14-30 0-38" style="fill:#33bbb8" />
+    <path d="m264 305 30 22V113h-1l-22 12q-15 9-30 0l-21-12h-1v215l30-23q8-4 15 0" style="fill:#f8392a" />
+  </symbol>
   <symbol id="recyclarr" viewBox="762 306.2 401.8 459.6">
     <style>
     .st0{fill:#fefefe}
@@ -249,37 +257,43 @@
     <use href="#lidarr" x="412" y="186" width="72" height="72" />
     <text x="448.0" y="286" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">lidarr</text>
     <rect x="524" y="174" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#navidrome" x="536" y="186" width="72" height="72" />
-    <text x="572.0" y="286" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">navidrome</text>
+    <use href="#metube" x="536" y="186" width="72" height="72" />
+    <text x="572.0" y="286" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">metube</text>
     <rect x="648" y="174" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#nixos" x="660" y="186" width="72" height="72" />
-    <text x="696.0" y="286" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">nixos</text>
+    <use href="#navidrome" x="660" y="186" width="72" height="72" />
+    <text x="696.0" y="286" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">navidrome</text>
     <rect x="28" y="320" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#ntfy" x="40" y="332" width="72" height="72" />
-    <text x="76.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">ntfy</text>
+    <use href="#nixos" x="40" y="332" width="72" height="72" />
+    <text x="76.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">nixos</text>
     <rect x="152" y="320" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#pocket-id" x="164" y="332" width="72" height="72" />
-    <text x="200.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">pocket-id</text>
+    <use href="#ntfy" x="164" y="332" width="72" height="72" />
+    <text x="200.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">ntfy</text>
     <rect x="276" y="320" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#prowlarr" x="288" y="332" width="72" height="72" />
-    <text x="324.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">prowlarr</text>
+    <use href="#pocket-id" x="288" y="332" width="72" height="72" />
+    <text x="324.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">pocket-id</text>
     <rect x="400" y="320" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#radarr" x="412" y="332" width="72" height="72" />
-    <text x="448.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">radarr</text>
+    <use href="#prowlarr" x="412" y="332" width="72" height="72" />
+    <text x="448.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">prowlarr</text>
     <rect x="524" y="320" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#readeck" x="536" y="332" width="72" height="72" />
-    <text x="572.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">readeck</text>
+    <use href="#radarr" x="536" y="332" width="72" height="72" />
+    <text x="572.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">radarr</text>
     <rect x="648" y="320" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#recyclarr" x="660" y="332" width="72" height="72" />
-    <text x="696.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">recyclarr</text>
+    <use href="#readeck" x="660" y="332" width="72" height="72" />
+    <text x="696.0" y="432" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">readeck</text>
     <rect x="28" y="466" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#seerr" x="40" y="478" width="72" height="72" />
-    <text x="76.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">seerr</text>
+    <use href="#readmeabook" x="40" y="478" width="72" height="72" />
+    <text x="76.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">readmeabook</text>
     <rect x="152" y="466" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#sonarr" x="164" y="478" width="72" height="72" />
-    <text x="200.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">sonarr</text>
+    <use href="#recyclarr" x="164" y="478" width="72" height="72" />
+    <text x="200.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">recyclarr</text>
     <rect x="276" y="466" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
-    <use href="#unraid" x="288" y="478" width="72" height="72" />
-    <text x="324.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">unraid</text>
+    <use href="#seerr" x="288" y="478" width="72" height="72" />
+    <text x="324.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">seerr</text>
+    <rect x="400" y="466" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
+    <use href="#sonarr" x="412" y="478" width="72" height="72" />
+    <text x="448.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">sonarr</text>
+    <rect x="524" y="466" width="96" height="96" rx="16" fill="#fff" stroke="#e5e7eb" />
+    <use href="#unraid" x="536" y="478" width="72" height="72" />
+    <text x="572.0" y="578" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#374151">unraid</text>
   </g>
 </svg>
