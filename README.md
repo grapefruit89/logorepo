@@ -1,6 +1,6 @@
 # Logo Repository
 
-# [Find Logos](https://dashboardicons.com/)
+## [Find Logos](https://dashboardicons.com/)
 
 A centralized repository for SVG logos used across the mediNix ecosystem and other projects.
 
