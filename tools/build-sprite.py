@@ -17,6 +17,7 @@ ET.register_namespace("", SVG_NS)
 
 URL_REF_RE = re.compile(r"url\(#([^)]+)\)")
 HASH_REF_RE = re.compile(r"^#(.+)$")
+_LENGTH_RE = re.compile(r"^([0-9]*\.?[0-9]+)(px|pt|em|rem|%)?$")
 PAINT_TAGS = {
     "linearGradient",
     "radialGradient",
@@ -30,6 +31,19 @@ PAINT_TAGS = {
 
 def local_name(tag):
     return tag.rsplit("}", 1)[-1]
+
+
+def parse_length(value):
+    if not value:
+        return None
+    match = _LENGTH_RE.match(value.strip())
+    if not match:
+        return None
+    # Prozent/em/rem sind nicht in absolute Nutzerkoordinaten übersetzbar
+    unit = match.group(2) or "px"
+    if unit in {"%", "em", "rem"}:
+        return None
+    return match.group(1)  # numeric string
 
 
 def make_id(filename):
@@ -308,14 +322,14 @@ def build_symbol(path):
     viewbox = root.get("viewBox")
 
     if not viewbox:
-        width = root.get("width")
-        height = root.get("height")
+        w = parse_length(root.get("width"))
+        h = parse_length(root.get("height"))
 
-        if width and height:
-            viewbox = f"0 0 {width} {height}"
+        if w and h:
+            viewbox = f"0 0 {w} {h}"
         else:
             raise ValueError(
-                f"{path.name}: kein viewBox vorhanden"
+                f"{path.name}: kein nutzbarer viewBox und keine absoluten width/height"
             )
 
     modernize_xlink(root)

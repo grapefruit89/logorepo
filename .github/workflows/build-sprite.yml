@@ -7,7 +7,12 @@ on:
     paths:
       - "logos/**/*.svg"
       - "tools/build-sprite.py"
+      - ".github/workflows/build-sprite.yml"
   workflow_dispatch:
+
+concurrency:
+  group: sprite-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -25,7 +30,8 @@ jobs:
 
       - name: Commit generated sprite
         run: |
-          if git diff --quiet -- dist/icons.svg; then
+          git add -A dist/
+          if git diff --cached --quiet; then
             echo "✓ Sprite ist bereits aktuell."
             exit 0
           fi
@@ -33,6 +39,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add dist/icons.svg
           git commit -m "build: update SVG sprite"
           git push
