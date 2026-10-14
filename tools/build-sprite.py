@@ -7,8 +7,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 LOGOS = ROOT / "logos"
-DIST = ROOT / "dist"
-OUTPUT = DIST / "icons.svg"
+OUTPUT = ROOT / "icons.svg"
 
 SVG_NS = "http://www.w3.org/2000/svg"
 XLINK_NS = "http://www.w3.org/1999/xlink"
@@ -17,7 +16,7 @@ ET.register_namespace("", SVG_NS)
 
 URL_REF_RE = re.compile(r"url\(#([^)]+)\)")
 HASH_REF_RE = re.compile(r"^#(.+)$")
-_LENGTH_RE = re.compile(r"^([0-9]*\.?[0-9]+)(px|pt|em|rem|%)?$")
+_LENGTH_RE = re.compile(r"^(\d+(?:\.\d+)?|\.\d+)(px|pt)?$")
 PAINT_TAGS = {
     "linearGradient",
     "radialGradient",
@@ -34,16 +33,11 @@ def local_name(tag):
 
 
 def parse_length(value):
+    """Return the numeric portion of an absolute SVG length, or None."""
     if not value:
         return None
-    match = _LENGTH_RE.match(value.strip())
-    if not match:
-        return None
-    # Prozent/em/rem sind nicht in absolute Nutzerkoordinaten übersetzbar
-    unit = match.group(2) or "px"
-    if unit in {"%", "em", "rem"}:
-        return None
-    return match.group(1)  # numeric string
+    match = _LENGTH_RE.fullmatch(value.strip())
+    return match.group(1) if match else None
 
 
 def make_id(filename):
@@ -529,8 +523,6 @@ def build():
     add_preview_sheet(sprite, used_ids)
 
     indent(sprite)
-
-    DIST.mkdir(parents=True, exist_ok=True)
 
     xml = ET.tostring(
         sprite,

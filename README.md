@@ -4,6 +4,12 @@
 
 A centralized repository for SVG logos used across the mediNix ecosystem and other projects.
 
+## Preview
+
+<img src="icons.svg" alt="mediNix icon sprite" width="800">
+
+The sprite is auto-generated from the SVG source files in [`logos/`](logos/).
+
 The repository has a deliberately simple architecture:
 
 ```text
@@ -13,7 +19,7 @@ logos/*.svg
 tools/build-sprite.py
       │
       ▼
-dist/icons.svg
+icons.svg
       ▲
       │
 GitHub Actions
@@ -32,7 +38,7 @@ This repository provides a clean and centralized location for service and infras
 Instead of storing copies of the same SVG files inside multiple projects, applications can consume the generated sprite:
 
 ```text
-dist/icons.svg
+icons.svg
 ```
 
 Each logo becomes an SVG `<symbol>` with a stable identifier derived from its filename.
@@ -88,9 +94,7 @@ logorepo/
 ├── tools/
 │   └── build-sprite.py
 │
-├── dist/
-│   └── icons.svg
-│
+├── icons.svg
 └── .github/
     └── workflows/
         └── build-sprite.yml
@@ -242,7 +246,7 @@ Its job is to:
 11. Write the result to:
 
 ```text
-dist/icons.svg
+icons.svg
 ```
 
 The resulting sprite is deterministic: the same set of source SVGs produces the same logical sprite structure.
@@ -303,7 +307,7 @@ If neither a `viewBox` nor usable dimensions exist, the build fails instead of g
 The final artifact is:
 
 ```text
-dist/icons.svg
+icons.svg
 ```
 
 It contains all logos as `<symbol>` elements inside one SVG document.
@@ -370,6 +374,17 @@ while the fragment identifier selects the required symbol:
 
 This allows applications to use the same centralized asset collection without maintaining individual copies of every logo.
 
+## Consuming the sprite
+
+```html
+<svg aria-hidden="true" width="24" height="24">
+  <use href="/icons.svg#jellyfin"></use>
+</svg>
+```
+
+The fragment identifier (`#jellyfin`, `#seerr`, etc.) selects the symbol.
+The filename in `logos/` determines the public symbol ID.
+
 ---
 
 # `experiments/`
@@ -424,7 +439,7 @@ GitHub Actions
     ↓
 build-sprite.py
     ↓
-dist/icons.svg
+icons.svg
 ```
 
 The workflow then checks whether the generated sprite actually changed.
@@ -434,7 +449,7 @@ If nothing changed, no commit is created.
 If the sprite changed, GitHub Actions commits the updated:
 
 ```text
-dist/icons.svg
+icons.svg
 ```
 
 and pushes it back to `main`.
@@ -443,14 +458,14 @@ and pushes it back to `main`.
 
 # Why the Generated Sprite Is Committed
 
-`dist/icons.svg` is a generated artifact, but it is intentionally committed to the repository.
+`icons.svg` is a generated artifact, but it is intentionally committed to the repository.
 
 This makes the repository immediately consumable without requiring every consumer to run the Python build process.
 
 Consumers can simply fetch:
 
 ```text
-dist/icons.svg
+icons.svg
 ```
 
 The repository therefore provides both:
@@ -464,7 +479,7 @@ and:
 
 ```text
 Ready-to-use artifact:
-dist/icons.svg
+icons.svg
 ```
 
 The build process keeps the two synchronized.
@@ -530,7 +545,7 @@ logos/seerr.svg
 After pushing the change, the automated build regenerates:
 
 ```text
-dist/icons.svg
+icons.svg
 ```
 
 The public ID remains:
@@ -556,7 +571,7 @@ logos/
 is authoritative.
 
 ```text
-dist/
+icons.svg
 ```
 
 is generated.
@@ -684,7 +699,7 @@ logos/*.svg
     ↓
 tools/build-sprite.py
     ↓
-dist/icons.svg
+icons.svg
 ```
 
 GitHub Actions maintains the generated artifact automatically.

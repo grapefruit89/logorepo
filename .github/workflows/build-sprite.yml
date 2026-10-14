@@ -7,7 +7,6 @@ on:
     paths:
       - "logos/**/*.svg"
       - "tools/build-sprite.py"
-      - ".github/workflows/build-sprite.yml"
   workflow_dispatch:
 
 concurrency:
@@ -30,9 +29,10 @@ jobs:
 
       - name: Commit generated sprite
         run: |
-          git add -A dist/
+          git add icons.svg
+
           if git diff --cached --quiet; then
-            echo "✓ Sprite ist bereits aktuell."
+            echo "✓ Sprite is already up to date."
             exit 0
           fi
 
